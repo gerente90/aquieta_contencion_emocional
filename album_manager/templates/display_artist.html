@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title%}{{artist}}{% endblock title %}
+
+{% block content %}
+<style>
+    .custom-font {
+        font-family: 'Arial, sans-serif';
+        font-size: 1.2rem;
+    }
+    .custom-header {
+        font-family: 'Georgia, serif';
+        font-size: 2rem;
+    }
+</style>
+<div class="d-flex align-items-center mt-3 justify-content-between custom-header">
+    <h2 class="mb-0"><strong>{{ artist | capfirst }}</strong></h2>
+    <a href="/artist" class="btn btn-success ms-5">Regresar</a>
+</div>
+<div class="container-sm custom-font">
+    <h3 class="mt-3">Informaci&oacute;n:</h3>
+    <ul>
+        <li><h5>Nombre: {{artist.name}}</h5></li>
+        <li><h5>Pa&iacute;s de origen: {{artist.country}}</h5></li>
+    </ul>
+</div>
+{% endblock content %}

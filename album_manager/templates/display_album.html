@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title%}{{album}}{% endblock title %}
+
+{% block content %}
+<style>
+    .custom-font {
+        font-family: 'Arial, sans-serif';
+        font-size: 1.2rem;
+    }
+    .custom-header {
+        font-family: 'Georgia, serif';
+        font-size: 2rem;
+    }
+    .custom-image {
+        height: 400px;
+        width: auto;
+    }
+</style>
+<div class="d-flex align-items-center mt-3 justify-content-between custom-header">
+    <h2 class="mb-0">Has elegido el &aacute;lbum: <strong>{{ album | capfirst }}</strong></h2>
+    <a href="/album" class="btn btn-success ms-5">Regresar</a>
+</div>
+<div class="container-sm custom-font">
+    <img src="{{ album.cover.url }}" alt="" class="my-3 rounded mx-auto d-block custom-image">
+    <h3 class="my-3">Informaci&oacute;n del &aacute;lbum:</h3>
+    <ul>
+        <li><h5>T&iacute;tulo: {{album.title}}</h5></li>
+        <li><h5>A&ntilde;o de lanzamiento: {{album.year}}</h5></li>
+        <li><h5>G&eacute;nero: {{album.genre}}</h5></li>
+        <li><h5>Artista: {{album.artist}}</h5></li>
+    </ul>
+</div> 
+{% endblock content %}

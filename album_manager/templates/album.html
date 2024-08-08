@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}Álbumes{% endblock title %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="mb-4">Lista de Álbumes</h2>
+
+    <a href="{% url 'album_manager:add_album' %}" class="btn btn-success mb-4">Agregar Álbum</a>
+
+    <div class="row">
+        {% for album in albums %}
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <img src="{{ album.cover.url }}" alt="{{ album.title }}" class="card-img-top" style="height: 300px; object-fit: cover;">
+                <div class="card-body">
+                    <h5 class="card-title"><strong>{{ album.title }}</strong></h5>
+                    <p class="card-text">Artista: {{ album.artist.name }}</p>
+                    <p class="card-text">Año: {{ album.year }}</p>
+                    <p class="card-text">Género: {{ album.genre }}</p>
+                    <a href="{% url 'album_manager:display_album' album.title %}" class="btn btn-info btn-sm">
+                        <i class="fa-solid fa-eye"></i> Ver
+                    </a>
+                    <a href="{% url 'album_manager:edit_album' album.title %}" class="btn btn-warning btn-sm">
+                        <i class="fa-solid fa-pencil"></i> Editar
+                    </a>
+                    <a href="{% url 'album_manager:delete_album' album.title %}" class="btn btn-danger btn-sm">
+                        <i class="fa-solid fa-trash"></i> Eliminar
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="col-12 text-center">
+            <p>No hay álbumes disponibles.</p>
+        </div>
+        {% endfor %}
+    </div>
+
+    <a href="/" class="btn btn-success mt-4">Regresar</a>
+</div>
+{% endblock content %}

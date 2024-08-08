@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Music Store{% endblock title %}
+{% load static %}
+{% block content %}
+<br>
+<p class="p-2 font-weight-bold display-4">Hola, esta es mi tienda de Discos de tu amigo Jefferson Almeida</p>
+<br>
+<div class="container-fluid">
+    <div class="container mt-5">
+        <div class="row no-gutters">
+            {% for album in albums %}
+            <div class="col-md-4 d-flex align-items-stretch mb-4">
+                <div class="card text-center w-100">
+                    {% if album.cover %}
+                    <img src="{{ album.cover.url }}" class="card-img-top" style="height: 300px;" alt="{{ album.title }}">
+                    {% else %}
+                    <img src="{% static 'images/default_cover.jpg' %}" class="card-img-top" style="height: 300px;" alt="Default Cover">
+                    {% endif %}
+                    <div class="card-body">
+                        <h5 class="card-title h3">{{ album.title }}</h5>
+                        <p class="card-text">Artista: {{ album.artist.name }}</p>
+                        <p class="card-text">Año: {{ album.year }}</p>
+                        <a href="{% url 'album_manager:display_album' album.title %}" class="btn btn-success">Ver Detalles</a>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <p>No hay álbumes disponibles.</p>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock content %}
