@@ -1,12 +1,16 @@
 from pathlib import Path
 import os
 import dj_database_url
+import django_heroku
+
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-&f@(($730wtth=$h50&lk6_r9dg_y6m272z!hm^j6h5y8gqod7'
-DEBUG = False  # Cambia a True solo en desarrollo
-ALLOWED_HOSTS = ['calm-castle-70413.herokuapp.com']
+DEBUG = True  # Cambia a True solo en desarrollo
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'your-app-name.herokuapp.com']
+
+
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -20,6 +24,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -49,8 +54,11 @@ TEMPLATES = [
 WSGI_APPLICATION = 'albums.wsgi.application'
 
 DATABASES = {
-    'default': dj_database_url.config(default='sqlite:///db.sqlite3')
+    'default': dj_database_url.config(
+        default='sqlite:///db.sqlite3'  # Usa SQLite por defecto si no hay una URL de base de datos configurada
+    )
 }
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -86,3 +94,4 @@ LOGOUT_REDIRECT_URL = '/'
 SECURE_SSL_REDIRECT = True
 CSRF_COOKIE_SECURE = True
 SESSION_COOKIE_SECURE = True
+django_heroku.settings(locals())
