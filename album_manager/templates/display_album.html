@@ -17,17 +17,18 @@
     }
 </style>
 <div class="d-flex align-items-center mt-3 justify-content-between custom-header">
-    <h2 class="mb-0">Has elegido el &aacute;lbum: <strong>{{ album | capfirst }}</strong></h2>
+    <h2 class="mb-0">Has elegido la historia: <strong>{{ album | capfirst }}</strong></h2>
     <a href="/album" class="btn btn-success ms-5">Regresar</a>
 </div>
 <div class="container-sm custom-font">
     <img src="{{ album.cover.url }}" alt="" class="my-3 rounded mx-auto d-block custom-image">
-    <h3 class="my-3">Informaci&oacute;n del &aacute;lbum:</h3>
+    <h3 class="my-3"><strong>Informaci&oacute;n de la historia:</strong></h3>
     <ul>
-        <li><h5>T&iacute;tulo: {{album.title}}</h5></li>
-        <li><h5>A&ntilde;o de lanzamiento: {{album.year}}</h5></li>
-        <li><h5>G&eacute;nero: {{album.genre}}</h5></li>
-        <li><h5>Artista: {{album.artist}}</h5></li>
+        <li><h5><strong>T&iacute;tulo:</strong> {{album.title}}</h5></li>
+        <li><h5><strong>A&ntilde;o de lanzamiento:</strong> {{album.year}}</h5></li>
+        <li><h5><strong>Autor:</strong> {{album.artist}}</h5></li>
+        <li><h5><strong>Historia:</strong> {{album.story}}</h5></li>
+        
     </ul>
 </div> 
 {% endblock content %}

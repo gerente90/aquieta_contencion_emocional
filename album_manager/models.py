@@ -12,7 +12,7 @@ class Artist(models.Model):
 class Album(models.Model):
     title = models.CharField(max_length=100)
     year = models.IntegerField()
-    genre = models.CharField(max_length=100)
+    story = models.TextField(default='Historia no disponible')
     artist = models.ForeignKey(Artist, on_delete=models.CASCADE)
     cover = models.ImageField(upload_to='covers')
 

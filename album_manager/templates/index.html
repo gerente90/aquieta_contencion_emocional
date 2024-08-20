@@ -1,9 +1,13 @@
 {% extends "base.html" %}
-{% block title %}Music Store{% endblock title %}
+{% block title %}Aquieta{% endblock title %}
 {% load static %}
 {% block content %}
 <br>
-<p class="p-2 font-weight-bold display-4">Hola, esta es mi tienda de Discos de tu amigo Jefferson Almeida</p>
+<h1 style="color: turquoise;">Aquieta proyecto de contención emocional</h1>
+<br>
+<p class="p-2 display-15" style="font-size: 1.5rem; color: #003366;">
+ Aquieta presenta historias inspiradoras de resiliencia y superación personal, permitiendo a los usuarios encontrar consuelo y esperanza al comparar sus propias experiencias con las de otros. Con un enfoque en la empatía y el fortalecimiento emocional, Aquieta busca ser un espacio seguro donde las personas puedan conectarse con relatos que les ayuden a ver que, aunque las circunstancias sean difíciles, es posible superarlas y salir adelante.
+</p>
 <br>
 <div class="container-fluid">
     <div class="container mt-5">
@@ -18,9 +22,9 @@
                     {% endif %}
                     <div class="card-body">
                         <h5 class="card-title h3">{{ album.title }}</h5>
-                        <p class="card-text">Artista: {{ album.artist.name }}</p>
+                        <p class="card-text">Autor: {{ album.artist.name }}</p>
                         <p class="card-text">Año: {{ album.year }}</p>
-                        <a href="{% url 'album_manager:display_album' album.title %}" class="btn btn-success">Ver Detalles</a>
+                        <a href="{% url 'album_manager:display_album' album.title %}" class="btn btn-info">Ver Historia</a>
                     </div>
                 </div>
             </div>

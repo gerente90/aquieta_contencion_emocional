@@ -4,9 +4,9 @@
 
 {% block content %}
 <div class="container mt-4">
-    <h2 class="mb-4">Lista de Álbumes</h2>
+    <h2 class="mb-4">Lista de Historias</h2>
 
-    <a href="{% url 'album_manager:add_album' %}" class="btn btn-success mb-4">Agregar Álbum</a>
+    <a href="{% url 'album_manager:add_album' %}" class="btn btn-success mb-4">Agregar Historia</a>
 
     <div class="row">
         {% for album in albums %}
@@ -15,9 +15,10 @@
                 <img src="{{ album.cover.url }}" alt="{{ album.title }}" class="card-img-top" style="height: 300px; object-fit: cover;">
                 <div class="card-body">
                     <h5 class="card-title"><strong>{{ album.title }}</strong></h5>
-                    <p class="card-text">Artista: {{ album.artist.name }}</p>
+                    <p class="card-text">Autor: {{ album.artist.name }}</p>
                     <p class="card-text">Año: {{ album.year }}</p>
-                    <p class="card-text">Género: {{ album.genre }}</p>
+                    <p class="card-text">Historia: </p>
+                    <textarea class="form-control" rows="10" readonly>{{ album.story }}</textarea>
                     <a href="{% url 'album_manager:display_album' album.title %}" class="btn btn-info btn-sm">
                         <i class="fa-solid fa-eye"></i> Ver
                     </a>
@@ -32,7 +33,7 @@
         </div>
         {% empty %}
         <div class="col-12 text-center">
-            <p>No hay álbumes disponibles.</p>
+            <p>No hay historias disponibles.</p>
         </div>
         {% endfor %}
     </div>
