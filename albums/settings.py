@@ -3,14 +3,17 @@ import os
 import dj_database_url
 import django_heroku
 
-
+# Define base directory
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'django-insecure-&f@(($730wtth=$h50&lk6_r9dg_y6m272z!hm^j6h5y8gqod7'
-DEBUG = False  # Cambia a True solo en desarrollo
+# Secret key for Django (Make sure to keep it secret in production)
+SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-&f@(($730wtth=$h50&lk6_r9dg_y6m272z!hm^j6h5y8gqod7')
+
+# Debug mode should be False in production
+DEBUG = False
+
+# Allowed hosts should include your production domain and any other domains
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'calm-castle-70413.herokuapp.com']
-
-
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -72,23 +75,31 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-# LANGUAGE_CODE = 'en-us'
-# TIME_ZONE = 'UTC'
-# USE_I18N = True
-# USE_TZ = True
+# Localization settings
+LANGUAGE_CODE = 'en-us'
+TIME_ZONE = 'UTC'
+USE_I18N = True
+USE_TZ = True
 
+# Static files (CSS, JavaScript, Images)
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
+# Media files (uploaded files)
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
+# Default auto field
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# Login and logout redirects
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
-# SECURE_SSL_REDIRECT = True
-# CSRF_COOKIE_SECURE = True
-# SESSION_COOKIE_SECURE = True
+# Security settings
+SECURE_SSL_REDIRECT = True
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
+
+# Apply Django-Heroku settings
 django_heroku.settings(locals())
