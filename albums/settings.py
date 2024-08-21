@@ -7,7 +7,7 @@ import django_heroku
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-&f@(($730wtth=$h50&lk6_r9dg_y6m272z!hm^j6h5y8gqod7'
-DEBUG = True  # Cambia a True solo en desarrollo
+DEBUG = False  # Cambia a True solo en desarrollo
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'calm-castle-70413.herokuapp.com']
 
 
