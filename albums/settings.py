@@ -8,7 +8,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-&f@(($730wtth=$h50&lk6_r9dg_y6m272z!hm^j6h5y8gqod7'
 DEBUG = True  # Cambia a True solo en desarrollo
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'your-app-name.herokuapp.com']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'calm-castle-70413.herokuapp.com']
 
 
 
@@ -55,7 +55,7 @@ WSGI_APPLICATION = 'albums.wsgi.application'
 
 DATABASES = {
     'default': dj_database_url.config(
-        default='sqlite:///db.sqlite3'  # Usa SQLite por defecto si no hay una URL de base de datos configurada
+        default=os.environ.get('DATABASE_URL')  # Utiliza la variable de entorno DATABASE_URL proporcionada por Heroku
     )
 }
 
